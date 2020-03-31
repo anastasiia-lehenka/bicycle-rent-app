@@ -1,0 +1,104 @@
+.add-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    background-color: #e7e9ef;
+    border: 1px solid #d0d1d6;
+    margin-bottom: 40px;
+    padding: 35px 20px;
+    border-radius: 5px;
+    color: #68696d;
+}
+
+.input {
+    display: block;
+    padding: 12px 10px;
+    border: 1px solid #d8d9de;
+    border-radius: 5px;
+    outline: 0;
+    color: #68696d;
+}
+
+.input::placeholder {
+    color: #d0d1d6;
+}
+
+.label span,
+.error-message {
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    font-size: 12px;
+}
+
+.input--price {
+    width: 100px;
+    -webkit-appearance: none;
+}
+
+.input--price::-webkit-outer-spin-button,
+.input--price::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.input--name {
+    width: 220px;
+}
+
+.select-container {
+    width: 220px;
+    padding: 0;
+    background-color: white;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    color: #68696d;
+    border-radius: 5px;
+}
+
+.select {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 12px 10px;
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+    color: #68696d;
+}
+
+.select-container:after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-color: #68696d transparent transparent transparent;
+    z-index: 0;
+}
+
+.button--submit {
+    align-self: center;
+    background-color: #36c384;
+}
+
+.button--submit:hover {
+    background-color: #279265;
+}
+
+.button--submit:active {
+    border: 1px solid green;
+}
+
+.error-message {
+    color: red;
+    top: 75%;
+}

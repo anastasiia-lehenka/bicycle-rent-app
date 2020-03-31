@@ -1,0 +1,50 @@
+.list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: white;
+    border: 1px solid #d0d1d6;
+    border-radius: 5px;
+}
+
+.list-item p {
+   max-width: 400px;
+}
+
+.list-item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.list-item__details {
+    color: #68696d;
+}
+
+.buttons-section .button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.button--rent {
+    background-color: #4750ab;
+}
+
+.button--rent:hover {
+    background-color: #3c438b;
+}
+
+.button--delete,
+.button--cancel {
+    background-color: #ec1014;
+}
+
+.button--delete:hover,
+.button--cancel:hover {
+    background-color: #b80e11;
+}
+
+.button--delete:active,
+.button--cancel:active,
+.button--rent:active {
+    background-color: #b7b8b4;
+}
