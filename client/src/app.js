@@ -52,9 +52,9 @@ class App extends Component {
             .catch(err => console.log(err));
     };
 
-    toggleRent = item => {
+    toggleRent = (item, isRented) => {
         const { bicycles } = this.state;
-        item.rented = !item.rented;
+        item.rented = isRented;
 
         fetch(`/api/bicycles/${item._id}`, {
             method: 'PATCH',

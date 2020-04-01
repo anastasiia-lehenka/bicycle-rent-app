@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
-let Bicycle = require('../model/Bicycle');
+const Bicycle = require('../model/Bicycle');
 
 router.get('/', async (req, res) => {
     const bicyclesList = await Bicycle.find();

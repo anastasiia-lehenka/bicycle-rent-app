@@ -20,5 +20,6 @@ const bicycleSchema = new Schema({
     }
 }, { versionKey: false });
 
-module.exports = model('Bicycles', bicycleSchema);
+const Bicycle = model('Bicycles', bicycleSchema);
 
+module.exports = Bicycle;
