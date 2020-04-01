@@ -1,59 +1,51 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
-let bicycles = require('../model');
+let Bicycle = require('../model/Bicycle');
 
-router.get('/', (req, res) => res.send(bicycles));
+router.get('/', async (req, res) => {
+    const bicyclesList = await Bicycle.find();
+    res.send(bicyclesList)
+});
 
-router.delete('/:id', (req, res) => {
-    const bicycleItem = bicycles.find(item => item.id === parseInt(req.params.id));
-
-    if (!bicycleItem) {
-        return res.status(404).send('The bicycle with given id was not found');
-    }
-    bicycles = bicycles.filter(item => item.id !== parseInt(req.params.id));
+router.delete('/:id', async (req, res) => {
+    await Bicycle.findByIdAndDelete(req.params.id);
     res.send();
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const schema = {
         name: Joi.string().min(3).required(),
         type: Joi.string().min(3).required(),
         price: Joi.number().required(),
         rented: Joi.boolean()
     };
-    const bicycle = {
-        id: bicycles.length + 1,
+    const newBicycle = {
         name: req.body.name,
         type: req.body.type,
         price: req.body.price,
         rented: req.body.rented
     };
-    const validationError = Joi.validate(req.body, schema).error;
 
+    const validationError = Joi.validate(req.body, schema).error;
     if (validationError) {
         return res.status(400).send(validationError.details[0].message);
     }
 
-    bicycles.push(bicycle);
-    res.send(bicycle);
+    const bicycleItem = await Bicycle.create(newBicycle);
+    res.send(bicycleItem);
 });
 
-router.patch('/:id', (req, res) => {
+router.patch('/:id', async (req, res) => {
     const schema = {
         rented: Joi.boolean().required()
     };
     const validationError = Joi.validate(req.body, schema).error;
-    const bicycleItem = bicycles.find(item => item.id === parseInt(req.params.id));
-
     if (validationError) {
         return res.status(400).send(validationError.details[0].message);
     }
-    if (!bicycleItem) {
-        return res.status(404).send('The bicycle with given id was not found');
-    }
 
-    bicycleItem.rented = req.body.rented;
+    const bicycleItem = await Bicycle.findByIdAndUpdate(req.params.id, req.body, {new: true});
     res.send(bicycleItem);
 });
 

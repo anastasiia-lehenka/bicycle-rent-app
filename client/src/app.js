@@ -48,7 +48,7 @@ class App extends Component {
         const { bicycles } = this.state;
 
         fetch(`/api/bicycles/${id}`, { method: 'DELETE' })
-            .then(() => this.setState({ bicycles: bicycles.filter(item => item.id !== id) }))
+            .then(() => this.setState({ bicycles: bicycles.filter(item => item._id !== id) }))
             .catch(err => console.log(err));
     };
 
@@ -56,7 +56,7 @@ class App extends Component {
         const { bicycles } = this.state;
         item.rented = !item.rented;
 
-        fetch(`/api/bicycles/${item.id}`, {
+        fetch(`/api/bicycles/${item._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-type': 'application/json'
@@ -64,7 +64,7 @@ class App extends Component {
             body: JSON.stringify({rented: item.rented})
         })
             .then(res => res.json())
-            .then(newItem => this.setState({ bicycles: [...bicycles.filter(item => item.id !== newItem.id), newItem] }))
+            .then(newItem => this.setState({ bicycles: [...bicycles.filter(item => item._id !== newItem._id), newItem] }))
             .catch(err => console.log(err));
     };
 

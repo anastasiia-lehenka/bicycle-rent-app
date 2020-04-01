@@ -15,7 +15,7 @@ export const BicycleItem = props => {
                 <button className="button button--cancel" onClick={ onToggleRent.bind(this, bicycleItem) }>Cancel rent</button>
                 : <div className="buttons-section">
                     <button className="button button--rent" onClick={ onToggleRent.bind(this, bicycleItem) }>Rent</button>
-                    <button className="button button--delete" onClick={ onDeleteItem.bind(this, bicycleItem.id) }>Delete</button>
+                    <button className="button button--delete" onClick={ onDeleteItem.bind(this, bicycleItem._id) }>Delete</button>
                 </div>
             }
         </li>

@@ -17,7 +17,7 @@ export const BicycleList = props => {
             { bicycleList.map(item =>
                     <BicycleItem
                         bicycleItem={ item }
-                        key={ item.id }
+                        key={ item._id }
                         onDeleteItem={ onDeleteItem }
                         onToggleRent={ onToggleRent }
                     />
